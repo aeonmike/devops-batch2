@@ -1,5 +1,5 @@
 pipeline {
-  agent any 
+  agent {label 'private'} 
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
@@ -25,7 +25,7 @@ pipeline {
     stage('Deploy') {
             steps {
               script {
-                   sh "docker run -d -p 8081:80 mikejc30/batch2:mynginx"
+                   sh "docker run -d -p 8083:80 mikejc30/batch2:mynginx"
                 }
               }
             }
